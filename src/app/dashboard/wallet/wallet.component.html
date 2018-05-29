@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-6 col-sm-3">
+    <p>
+      <strong>Address:</strong> {{walletDetails.address}}</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <p>
+      <strong>ETH balance:</strong> {{walletDetails.ethBalance}} ETH
+    </p>
+    <input type="number" [(ngModel)]="transferAmount">
+    <a class="btn btn-primary" (click)="sendEther()">Send ether to the account.</a>
+  </div>
+  <div class="col-xs-6">
+    <p>
+      <strong>Token balance:</strong> {{walletDetails.tokenBalance}} tokens</p>
+  </div>
+</div>

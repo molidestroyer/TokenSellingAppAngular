@@ -1,0 +1,12 @@
+<div class="row">
+  <label class="col-12">User address: {{walletDetails.address}}</label>
+  <label class="col-12">Current ETH balance: {{walletDetails.ethBalance}} ETH</label>
+  <label class="col-12">Token price: {{tokenPrice}}</label>
+</div>
+<div class="row">
+  <div class="col-12">
+    <label>Select the number of ETH to invest: </label>
+    <input type="number" [(ngModel)]="investAmount"/>
+  </div>
+  <a class="btn btn-primary" (click)="sendEther()">Send transfer</a>
+</div>

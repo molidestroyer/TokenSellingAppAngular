@@ -1,0 +1,11 @@
+<h2>Order list</h2>
+<mat-list>
+  <mat-list-item *ngFor="let order of orders">
+    <h3 matLine> {{order.transactionId}} </h3>
+    <h3 matLine> {{order.seller}} </h3>
+    <h3 matLine> {{order.amount}} </h3>
+    <h3 matLine> {{order.price}} </h3>
+    <button mat-button (click)="buyOrder(order.TransacionId)">Buy</button>
+  </mat-list-item>
+</mat-list>
+<button mat-button (click)="openDialog()">Create order</button>
