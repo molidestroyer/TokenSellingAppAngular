@@ -1,6 +1,5 @@
 import { OrderDetails } from './../models/order.details.interface';
 import { ExchangeService } from './services/exchange.services';
-import { DashboardService } from './../services/dashboard.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material';
@@ -49,10 +48,11 @@ export class CreateOrderDialog {
 export class ExchangeComponent implements OnInit {
   public orders = new Array<OrderDetails>();
 
-  constructor(private dashboardService: DashboardService, private exchangeService: ExchangeService, public dialog: MatDialog, private snackBar: MatSnackBar)  { }
+  constructor(private exchangeService: ExchangeService, public dialog: MatDialog, private snackBar: MatSnackBar)  { }
 
   ngOnInit() {
     this.exchangeService.getOrders().subscribe((orderDetails: Array<OrderDetails>) => {
+      debugger;
       this.orders  = orderDetails;
     },
       error => {

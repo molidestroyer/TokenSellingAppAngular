@@ -5,7 +5,6 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule }        from '@angular/router';
 
 import { RootComponent }    from './root/root.component';
-import { SettingsComponent }    from './settings/settings.component'; 
 
 import { AuthGuard } from '../auth.guard';
 import { InvestICOComponent } from './invest-ico/invest-ico.component';

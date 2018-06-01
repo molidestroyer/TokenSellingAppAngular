@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvestICOComponent implements OnInit {
  
+  private tokenPrice: number;
   private walletDetails: WalletDetails;
   private userAddress: string;
   private investAmount: number;
@@ -30,6 +31,14 @@ export class InvestICOComponent implements OnInit {
     this.dashboardService.getWalletDetails()
       .subscribe((walletDetails: WalletDetails) => {
         this.walletDetails = walletDetails;
+      },
+        error => {
+          //this.notificationService.printErrorMessage(error);
+        });
+
+        this.investICOService.getTokenPrice()
+      .subscribe((tokenPrice: number) => {
+        this.tokenPrice = tokenPrice;
       },
         error => {
           //this.notificationService.printErrorMessage(error);

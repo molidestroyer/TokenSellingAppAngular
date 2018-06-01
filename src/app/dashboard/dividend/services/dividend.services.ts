@@ -1,3 +1,4 @@
+import { OrderDetails } from './../../models/order.details.interface';
 import { ConfigService } from './../../../shared/utils/config.service';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
@@ -9,7 +10,7 @@ import { BaseService } from '../../../shared/services/base.service';
 
 @Injectable()
 
-export class InvestICOService extends BaseService {
+export class DividendService extends BaseService {
 
   baseUrl: string = ''; 
 
@@ -17,24 +18,24 @@ export class InvestICOService extends BaseService {
      super();
      this.baseUrl = configService.getApiURI();
   }
-
-  invest(amount: number){
+  
+  getPendingDividends(): Observable<number> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let authToken = localStorage.getItem('auth_token');
     headers.append('Authorization', `Bearer ${authToken}`);
 
-  return this.http.post(this.baseUrl + "/wallet/Invest",JSON.stringify({ amount }),{headers})
-    .pipe(map(response => response.json()),catchError(this.handleError));
-  }
-
-  getTokenPrice(): Observable<number> {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    let authToken = localStorage.getItem('auth_token');
-    headers.append('Authorization', `Bearer ${authToken}`);
-
-  return this.http.get(this.baseUrl + "/Wallet/TokenPrice",{headers})
+  return this.http.get(this.baseUrl + "/Dividend/pendingDividends",{headers})
     .pipe(map(response => response.json()),catchError(this.handleError));
   } 
+
+  claimDividends(){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let authToken = localStorage.getItem('auth_token');
+    headers.append('Authorization', `Bearer ${authToken}`);
+
+  return this.http.post(this.baseUrl + "/Dividend/claimDividends",{headers})
+    .pipe(map(response => response.json()),catchError(this.handleError));
+  }
 }
